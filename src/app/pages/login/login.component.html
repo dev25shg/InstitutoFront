@@ -4,17 +4,17 @@
             <h2>Login</h2>
             <form action="#">
                 <div class="input-box">
-                    <input type="email" required>
+                    <input type="email" [(ngModel)]="loginObj.Correo" name="Correo" required>
                     <label>Email</label>
                 </div>
                 <div class="input-box">
-                    <input type="password" required>
+                    <input type="password" [(ngModel)]="loginObj.Password" name="Password" required>
                     <label>Password</label>
                 </div>
                 <div class="forgot-pass">
                     <a href="#">Forgot your password?</a>
                 </div>
-                <button type="submit" class="btn">Login</button>
+                <button type="button" (click)="onLogin()" class="btn">Login</button>
                 <div class="signup-link">
                     <a href="#">Signup</a>
                 </div>
