@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/comon/http';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/comon/http';
+import {HttpClientModule} from '@angular/common/http';
+import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,15 +13,19 @@ import {HttpClientModule} from '@angular/comon/http';
 })
 export class LoginComponent {
   loginObj: Login;
-  constructor() {
+  constructor(private http: HttpClient) {
     this.loginObj= new Login();
   }
   onLogin() {
-    this.http.Get('https://localhost:7027/api/Estudiante/gh%2Cghhj?correo=gh&pass=ghhj', this.loginObj).suscribe((res:any)=>{
+    debugger;
+    console.log('Pase por aca'+this.loginObj.Correo);
+    this.http.post('https://localhost:7027/api/Estudiante/Login', this.loginObj).subscribe((res:any)=>{
       if(res.result) {
         
+        alert('Logueo exitoso');
+       // this.route.navigateByUrl('');
       }
-    })
+    });
 
   }
 }
